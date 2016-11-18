@@ -2,9 +2,9 @@
 
 # iterate over all trees/codon alignment and run fastcodeml and measure the time
 
-files=/data/sample/normal
+files=/data
 
-rf /data/times_eden.txt
+rm -rf /data/times_eden.txt || true
 echo "name;seq;start;end;diff" > /data/times_eden.txt
 rm -rf /data/output_eden || true
 mkdir -p /data/output_eden
@@ -15,7 +15,7 @@ do
   basename="${sample%.*}"
   basename2="${basename%.*}"
   codon=$files/codon/$basename2.msa
-  seq=$(head -n 1 $codon | cut -c-1)
+  seq=$(grep -c ">" $codon)
   START=$(date +%s)
   java -cp /home/eden/src/phyloTreeTools/ phyloDriver \
     -p -n $tree \
