@@ -16,9 +16,9 @@ do
   basename2="${basename%.*}"
   codon=$files/codon/$basename2.msa.phy
   seq=$(head -n 1 $codon | cut -c-1)
-  START=$(date +%s)
+  START=$(date +%s%3N)
   fast -m 22 -d 1 -nt 1 -bf $tree $codon > /data/output_fastcodeml/$basename2.fastcodeml
-  END=$(date +%s)
+  END=$(date +%s%3N)
   lrt=$(grep "LRT:" /data/output_fastcodeml/$basename2.fastcodeml | cut -d\   -f2)
   DIFF=$(( $END - $START ))
   echo "$basename2;$seq;$START;$END;$DIFF;$lrt" >> /data/times_fastcodeml.txt
