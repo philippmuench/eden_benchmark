@@ -10,5 +10,5 @@ FILES=$1/*/codon/*.msa
 for f in $FILES
 do
         echo "Processing $f file..."
-        ./Fasta2Phylip.pl $f $f.phy
+        Fasta2Phylip.pl $f $f.phy
 done
