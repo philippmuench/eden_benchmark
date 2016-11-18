@@ -16,7 +16,7 @@ do
   basename2="${basename%.*}"
   codon=$files/codon/$basename2.msa
   seq=$(grep -c ">" $codon)
-  START=$(date +%s)
+  START=$(date +%s%3N)
   java -cp /home/eden/src/phyloTreeTools/ phyloDriver \
     -p -n $tree \
     -t $files/msa/faa/$basename2.msa \
@@ -24,7 +24,7 @@ do
     -o /data/output_eden/$basename.txt \
     -tc $files/codon/$basename2.msa \
     -d > /dev/null 2> /dev/null || true
-  END=$(date +%s)
+  END=$(date +%s%3N)
   DIFF=$(( $END - $START ))
   echo "$basename2;$seq;$START;$END;$DIFF" >> /data/times_eden.txt
   echo "$basename2;$seq;$DIFF"
