@@ -15,13 +15,15 @@ do
   basename="${sample%.*}"
   basename2="${basename%.*}"
   codon=$files/codon/$basename2.msa
-
   seq=$(head -n 1 $codon | cut -c-1)
-  
   START=$(date +%s)
-
-  ## start phylotreetools here
-
+  java -cp /home/eden/src/phyloTreeTools/ phyloDriver \
+    -p -n $tree \
+    -t $files/msa/faa/$basename2.msa \
+    -f DelTran -cyt \
+    -o /data/output_eden/$basename.txt \
+    -tc $files/codon/$basename2.msa \
+    -d > /dev/null 2> /dev/null || true
   END=$(date +%s)
   DIFF=$(( $END - $START ))
   echo "$basename2;$seq;$START;$END;$DIFF" >> /data/times_eden.txt
