@@ -18,9 +18,8 @@ do
   seq=$(head -n 1 $codon | cut -c-1)
   START=$(date +%s)
   fast -m 22 -d 1 -nt 1 -bf $tree $codon > /data/output_fastcodeml/$basename2.fastcodeml
-#  fast -m 22 -d 1 -nt 1 -bf $tree $codon > /data/output/$basename2.h1.fastcodeml
   END=$(date +%s)
-  lrt=$(grep "LRT:" /data/output/$basename2.fastcodeml | cut -d\   -f2)
+  lrt=$(grep "LRT:" /data/output_fastcodeml/$basename2.fastcodeml | cut -d\   -f2)
   DIFF=$(( $END - $START ))
   echo "$basename2;$seq;$START;$END;$DIFF;$lrt" >> /data/times_fastcodeml.txt
   echo "$basename2;$seq;$DIFF;$lrt"
