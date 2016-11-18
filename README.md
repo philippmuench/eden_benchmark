@@ -3,8 +3,7 @@ comparison with fastcodeml
 
 # dependencies
 
-- docker container `philippmuench/eden:server_mode` and `philippmuench/fastcodeml:1.1.0` available at the docker.io hub
-- [Fasta2Phylip.pl](https://indra.mullins.microbiol.washington.edu/cgi-bin/perlscript/info.cgi?ID=Fasta2Phylip.pl&path=perlscript-scripts)
+- [Fasta2Phylip.pl](https://indra.mullins.microbiol.washington.edu/cgi-bin/perlscript/info.cgi?ID=Fasta2Phylip.pl&path=perlscript-scripts) (must be in $PATH, or change path in `fastcodeml/format.sh` line 13)
 
 # run benchmarking
 
